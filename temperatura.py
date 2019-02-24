@@ -3,7 +3,6 @@ import urllib
 import time
 
 sensor = Adafruit_DHT.DHT22
-
 pin = 23
 
 while True: 
