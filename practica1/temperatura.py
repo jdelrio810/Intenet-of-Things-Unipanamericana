@@ -14,8 +14,8 @@ while True:
 	else:
 		print('Fallo la lectura del sensor.Intentar de nuevo')
 
-	#url = "https://api.thingspeak.com/update?api_key=APIKEY"
+	url = "https://api.thingspeak.com/update?api_key=APIKEY"
 
-	#f=urllib.request.urlopen(url+"&field1="+str(temperatura)+"&field2="+str(humedad))
+	f=urllib.request.urlopen(url+"&field1="+str(temperatura)+"&field2="+str(humedad))
 	#f=urllib.request.urlopen(baseUrl+"&field1=%s&field2=%s"%(temperatura,humedad))
 	time.sleep(5) 
