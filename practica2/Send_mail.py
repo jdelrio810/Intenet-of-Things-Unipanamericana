@@ -4,9 +4,7 @@ import time
 from email.mime.text import MIMEText
 
 GPIO.setmode(GPIO.BCM)
-
 INPUT_PIN=4
-
 GPIO.setup(INPUT_PIN,GPIO.IN)
 
 while True:
