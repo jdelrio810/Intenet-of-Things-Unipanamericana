@@ -13,3 +13,6 @@ En este repositorio encontraran la
 
 -------Práctica de medición de temperatura y humedad-------------
 
+Para enviar un Twitter estudien la libreria request ( metodo post y get): http://docs.python-requests.org/en/master/user/quickstart/
+
+
