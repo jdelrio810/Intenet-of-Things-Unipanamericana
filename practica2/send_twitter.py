@@ -1,5 +1,6 @@
 import Adafruit_DHT
 import urllib.request
+import RPi.GPIO as GPIO
 import time
 import requests
 
