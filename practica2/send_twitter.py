@@ -1,4 +1,3 @@
-
 import Adafruit_DHT
 import urllib.request
 import time
@@ -7,11 +6,8 @@ import requests
 url_thingtweet= "https://api.thingspeak.com/apps/thingtweet/1/statuses/update"
 data = {"api_key":"xxxxxxxxxxx","status":"Dejastes la luz prendida..."}
 
-
 GPIO.setmode(GPIO.BCM)
-
 INPUT_PIN=4
-
 GPIO.setup(INPUT_PIN,GPIO.IN)
 
 while True:
