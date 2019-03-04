@@ -13,6 +13,9 @@ En este repositorio encontraran la
 
 -------Práctica de medición de temperatura y humedad-------------
 
+Para enviar un correo electronico estudie el uso de la libreria smtplib que hace referencia al protocolo SMTP: https://docs.python.org/3.5/library/smtplib.html
+
 Para enviar un Twitter estudien la libreria request ( metodo post y get): http://docs.python-requests.org/en/master/user/quickstart/
+
 
 
