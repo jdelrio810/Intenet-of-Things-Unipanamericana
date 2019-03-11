@@ -16,7 +16,7 @@ print "Espere que el sensor se estabilice"
 time.sleep(2)                              
 
 GPIO.output(TRIG, True)                    
-time.sleep(0.00001)                        
+time.sleep(0.01)                        
 GPIO.output(TRIG, False)                   
 
 while GPIO.input(ECHO)==0:                 
