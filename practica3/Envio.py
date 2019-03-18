@@ -5,7 +5,7 @@ import time
 
 
 while True:
-	arduino=serial.Serial('/dev/ttyUSB0',baudrate=115200, timeout = 1.0)
+	arduino=serial.Serial('/dev/ttyS1',baudrate=9600, timeout = 1.0)
 	inputPin = input("escribe una letra")
 	inputPinStr = str(inputPin)
 	inputPinStrBytes = inputPinStr.encode()
