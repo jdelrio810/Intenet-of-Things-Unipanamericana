@@ -1,9 +1,11 @@
 import Adafruit_DHT
 import urllib.request
 import time
+import requests
 
 sensor = Adafruit_DHT.DHT22
 pin = 23
+url = "https://api.thingspeak.com/update?api_key=8BVP76GOD2DIY6K7"
 
 
 while True: 
@@ -14,8 +16,10 @@ while True:
 	else:
 		print('Fallo la lectura del sensor.Intentar de nuevo')
 
-	url = "https://api.thingspeak.com/update?api_key=APIKEY"
+	
 
-	f=urllib.request.urlopen(url+"&field1="+str(temperatura)+"&field2="+str(humedad))
+	f=requests.get(url+"&field1="+str(temperatura)+"&field2="+str(humedad))
 	#f=urllib.request.urlopen(baseUrl+"&field1=%s&field2=%s"%(temperatura,humedad))
+
+
 	time.sleep(5) 
