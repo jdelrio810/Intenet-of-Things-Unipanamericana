@@ -5,7 +5,7 @@ import requests
 
 sensor = Adafruit_DHT.DHT22
 pin = 23
-url = "https://api.thingspeak.com/update?api_key=8BVP76GOD2DIY6K7"
+url = "https://api.thingspeak.com/update?api_key=APIKEY"
 
 
 while True: 
