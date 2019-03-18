@@ -11,7 +11,7 @@ ser.flushInput()
 while True:
     try:
         # read a single line from the serial interface represented by the ser object
-        ser = serial.Serial('/dev/ttyS1', 115200)
+        
         lineBytes = ser.readline()
         # convert Bytes returned by the ser.readline() function to String
         line = lineBytes.decode('utf-8')
