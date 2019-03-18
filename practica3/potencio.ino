@@ -10,8 +10,8 @@ SoftwareSerial ser(2,3);//Rx Tx
 void setup() {
   
   pinMode(sensorPin,INPUT);
-  Serial.begin(9600);
-  ser.begin(9600);
+  Serial.begin(115200);
+  ser.begin(115200);
 }
 
 void loop() {
