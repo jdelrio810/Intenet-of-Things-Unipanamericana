@@ -1,15 +1,14 @@
 import serial
 import time
 
-#arduino=serial.Serial('/dev/ttyUSB0',baudrate=115200, timeout = 1.0)
-
-
 while True:
-	arduino=serial.Serial('/dev/ttyS1',baudrate=9600, timeout = 1.0)
-	inputPin = input("escribe una letra")
-	inputPinStr = str(inputPin)
-	inputPinStrBytes = inputPinStr.encode()
-	arduino.write(inputPinStrBytes)
-	time.sleep(0.1)
-	arduino.close()
- 
+	try:
+		arduino=serial.Serial('/dev/ttyUSB0',baudrate=115200, timeout = 1.0)
+		inputPin = input("escribe una letra: ")
+		inputPinBytes = inputPin.encode('utf-8')
+		arduino.write(inputPinBytes)
+		time.sleep(0.1)
+		arduino.close()
+		
+	except KeyboardInterrupt:
+		break # stop the while loop
