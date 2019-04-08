@@ -38,7 +38,7 @@
 
 // You should get Auth Token in the Blynk App.
 // Go to the Project Settings (nut icon).
-char auth[] = "c0d9c20d31734b23a7391218d50d8102";//token app blink
+char auth[] = "**********************************";//token app blink
 
 // Your WiFi credentials.
 // Set password to "" for open networks.
