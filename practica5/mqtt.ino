@@ -137,13 +137,13 @@ void setup() {
   client.setServer(SERVER, SERVERPORT);
   client.setCallback(callback);
 
-  String temperatura = "/nodemcu/temperatura"; 
+  String temperatura = "/" + USERNAME + "/" + "temperatura"; 
   temperatura.toCharArray(TEMPERATURA, 50);
-  String pulsador = "/nodemcu/pulsador"; 
+  String pulsador = "/" + USERNAME + "/" + "pulsador"; 
   pulsador.toCharArray(PULSADOR, 50);
-  String salidaDigital = "/nodemcu/salidaDigital"; 
+  String salidaDigital = "/" + USERNAME + "/" + "salidaDigital"; 
   salidaDigital.toCharArray(SALIDADIGITAL, 50);
-  String salidaAnalogica = "/nodemcu/salidaAnalogica"; 
+  String salidaAnalogica = "/" + USERNAME + "/" + "salidaAnalogica"; 
   salidaAnalogica.toCharArray(SALIDAANALOGICA, 50);
   
 }
