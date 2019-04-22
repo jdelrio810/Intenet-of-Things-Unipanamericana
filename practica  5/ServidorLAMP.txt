@@ -1,0 +1,47 @@
+Entrar como superusuario:
+sudo –i
+
+Actualizaciones:
+apt-get update 
+apt-get upgrade
+
+Instalación de apache:
+apt-get install apache2
+
+Instalacion de mysql:
+apt-get install mysql-server mysql-client
+
+Instalacion de php:
+apt-cache search php7-*
+apt-get install php7.0
+apt-get install php7.0-mysql
+service apache2 restart
+
+Instalacion de phpmyadmin:
+sudo mysql_secure_installation
+sudo mysql -u root –p
+
+escribe quit
+sudo apt-get install python-mysqldb
+sudo mysql -u root –p
+
+GRANT ALL PRIVILEGES ON mydb.* TO 'username'@'localhost' IDENTIFIED BY 'password';
+escribe quit
+sudo apt-get install phpmyadmin
+sudo ln -s /usr/share/phpmyadmin /var/www/html
+sudo /etc/init.d/apache2 restart
+
+
+sudo mysql -u root
+use mysql
+=>UPDATE user
+=>SET Password=PASSWORD('raspberry')
+=>WHERE user='root';
+
+flush privileges;
+exit
+
+____________________------------------------------_____________
+
+
+
