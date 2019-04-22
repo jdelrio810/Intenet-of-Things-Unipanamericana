@@ -11,12 +11,12 @@ DHT dht(DHTPIN, DHTTYPE);
 //-------------------VARIABLES GLOBALES--------------------------
 int contconexion = 0;
 
-const char *ssid = "FAMILIA CADENA";
-const char *password = "Mei481SA";
-char   SERVER[50]   = "m24.cloudmqtt.com";
-int    SERVERPORT   = 14305;
-String USERNAME = "nodemcu";   
-char   PASSWORD[50] = "12345678";     
+const char *ssid = "***********";
+const char *password = "*******";
+char   SERVER[50]   = "75.101.131.202"; //"m11.cloudmqtt.com"
+int    SERVERPORT   = 10722;
+String USERNAME = "******";   
+char   PASSWORD[50] = "******";     
 
 unsigned long previousMillis = 0;
 
