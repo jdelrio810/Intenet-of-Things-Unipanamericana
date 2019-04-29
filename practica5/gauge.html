@@ -2,11 +2,10 @@
 <html>
   <head>
     <meta charset="UTF-8">
-    <title>Tutorial 13</title>
+    <title>Estacion Meteorologica</title>
     <script src="mqttws31.js" type="text/javascript"></script>
     <!-- https://api.cloudmqtt.com/sso/js/mqttws31.js -->   
-    <script src="raphael.js"></script>
-    <script src="justgage.js"></script> 
+    
   </head>
 
   <style type="text/css">
@@ -55,18 +54,9 @@
         <input type="range" id="myRange" min="0" max="1023"  onmouseup="enviarSalidaAnalogica()">
       </div>
     <script>      
-      usuario = 'nodemcu';
-      contrasena = '12345678';
-
+      usuario = '*********';
+      contrasena = '*********';
       
-      var g = new JustGage({
-          id: "gauge",
-          min: 0,
-          max: 100,
-          title: "Visitors"
-          });
-      
-
       function OnOff(dato){
         message = new Paho.MQTT.Message(dato);
         message.destinationName = '/' + usuario + '/salidaDigital'
@@ -100,7 +90,7 @@
       function onMessageArrived(message) {
         if (message.destinationName == '/' + usuario + '/' + 'temperatura') { //acá coloco el topic
             //document.getElementById("temperatura").textContent = message.payloadString  + " ºC";
-            g.refresh(message.payloadString);
+            temperatura.refresh(message.payloadString);
         }
         if (message.destinationName == '/' + usuario + '/' + 'pulsador') { //acá coloco el topic
             document.getElementById("pulsador").textContent = message.payloadString;
