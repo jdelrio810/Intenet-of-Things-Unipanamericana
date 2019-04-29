@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Estacion Meterologica</title>
+    <script src="mqttws31.js" type="text/javascript"></script>
+    <!-- https://api.cloudmqtt.com/sso/js/mqttws31.js -->   
+    <script src="raphael.js"></script>
+    <script src="justgage.js"></script> 
+  </head>
+
+  <style type="text/css">
+    .a200x160px {
+
+      width: 200px;
+      height: 160px;
+    }
+   
+    img{
+      margin-left: 75px;
+    }
+
+
+  </style>
+
+  <body>
+
+    <div>
+      <h1>Estacion Meteorologica<h1>
+      </div>
+
+      <div>
+        <h2>Suscripciones:</h2>
+      </div>
+      <div>
+        <a>Temperatura: </a>
+        <a id ="temperatura">-</a>
+      </div>
+      <div id="gauge" class="a200x160px"></div>
+
+      <div>
+        <a>Pulsador: </a>
+        <a id ="pulsador">-</a>
+      </div>
+
+      <div>
+       <img id = "imgpulsador" src = "nopresionado.png">
+      </div>
+      <div>
+        <a>Salida Digital: </a>
+        <a id ="salidaDigital">-</a>
+      </div>
+      <div>
+        <a>Salida Analógica: </a>
+        <a id ="salidaAnalogica">-</a>
+      </div>
+      <div>
+        <h2>Publicaciones:</h2>
+      </div>
+      <div>
+        <a>Salida Digital: </a>
+        <button type='button' onclick='OnOff("ON")'>ON</button>
+        <button type='button' onclick='OnOff("OFF")'>OFF</button>
+      </div>
+      <div>
+        <a>Salida Analógica: </a>
+        <input type="range" id="myRange" min="0" max="1023"  onmouseup="enviarSalidaAnalogica()">
+      </div>
+    <script>      
+      usuario = 'nodemcu';
+      contrasena = '12345678';
+
+      
+      var temperatura = new JustGage({
+          
+          id: "gauge",
+          min: 0,
+          max: 100,
+          title: "Visitors"
+          });
+      
+
+      function OnOff(dato){
+        message = new Paho.MQTT.Message(dato);
+        message.destinationName = '/' + usuario + '/salidaDigital'
+        client.send(message);
+      };
+
+      function enviarSalidaAnalogica(){
+        var dato = document.getElementById("myRange").value;
+        message = new Paho.MQTT.Message(dato);
+        message.destinationName = '/' + usuario + '/salidaAnalogica'
+        client.send(message);
+      };
+       
+      // called when the client connects
+      function onConnect() {
+        // Once a connection has been made, make a subscription and send a message.
+        console.log("onConnect");
+        client.subscribe("#");
+      }
+        
+      // called when the client loses its connection
+      function onConnectionLost(responseObject) {
+        if (responseObject.errorCode !== 0) {
+          console.log("onConnectionLost:", responseObject.errorMessage);
+          setTimeout(function() { client.connect() }, 5000);
+        }
+      }
+        
+        
+      // called when a message arrives
+      function onMessageArrived(message) {
+        if (message.destinationName == '/' + usuario + '/' + 'temperatura') { //acá coloco el topic
+            //document.getElementById("temperatura").textContent = message.payloadString  + " ºC";
+            temperatura.refresh(message.payloadString);
+        }
+        if (message.destinationName == '/' + usuario + '/' + 'pulsador') { //acá coloco el topic
+            //document.getElementById("pulsador").textContent = message.payloadString;
+            if (message.payloadString=="??????????"){
+              document.getElementById("imgpulsador").src = "presionado.png";
+            }
+            else if(message.payloadString=="??????????"){
+              document.getElementById("imgpulsador").src = "nopresionado.png";
+
+            }
+        }
+        if (message.destinationName == '/' + usuario + '/' + 'salidaDigital') { //acá coloco el topic
+            document.getElementById("salidaDigital").textContent = message.payloadString;
+        }
+        if (message.destinationName == '/' + usuario + '/' + 'salidaAnalogica') { //acá coloco el topic
+            document.getElementById("salidaAnalogica").textContent = message.payloadString;
+        }
+       
+       }
+      
+
+        function onFailure(invocationContext, errorCode, errorMessage) {
+          var errDiv = document.getElementById("error");
+          errDiv.textContent = "Could not connect to WebSocket server, most likely you're behind a firewall that doesn't allow outgoing connections to port 39627";
+          errDiv.style.display = "block";
+        }
+        
+        var clientId = "ws" + Math.random();
+        // Create a client instance
+        var client = new Paho.MQTT.Client("servidor",puerto, clientId);
+        
+        // set callback handlers
+        client.onConnectionLost = onConnectionLost;
+        client.onMessageArrived = onMessageArrived;
+        
+        // connect the client
+        client.connect({
+          useSSL: true,
+          userName: usuario,
+          password: contrasena,
+          onSuccess: onConnect,
+          onFailure: onFailure
+        });    
+    </script>
+  </body>
+</html>
