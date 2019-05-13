@@ -1,0 +1,38 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+    <title>Reloj con segundero dinamico</title>
+
+<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+
+<script language="JavaScript"> 
+
+    function mueveReloj(){ 
+        momentoActual = new Date() 
+        hora = momentoActual.getHours() 
+        minuto = momentoActual.getMinutes() 
+        segundo = momentoActual.getSeconds() 
+
+        horaImprimible = hora + " : " + minuto + " : " + segundo 
+
+        document.form_reloj.reloj.value = horaImprimible 
+
+        //La función se tendrá que llamar así misma para que sea dinámica, 
+        //de esta forma:
+
+        setTimeout(mueveReloj,1000)
+    }
+
+</script> 
+
+</head> 
+
+<body onload="mueveReloj()"> 
+
+    <form name="form_reloj"> 
+        <input type="text" name="reloj" size="10"> 
+    </form> 
+
+</body>
+</html>
